@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手部追蹤網頁</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <!-- 開始組裝畫面 -->
+    <div id="startScreen" class="start-screen">
+        <h1>歡迎來到無人機組裝指南</h1>
+        <p>請點擊下方按鈕開始組裝</p>
+        <button id="startButton" class="start-button">開始組裝</button>
+    </div>
+
+    <!-- 原本的組裝畫面 -->
+    <div id="assemblyScreen" class="assembly-screen" style="display: none;">
+        <div class="video-container">
+            <img id="video" src="{{ url_for('video_feed') }}" alt="Video feed" />
+        </div>
+
+        <div class="left-top">
+            <h3 id="videoStepTitle">影片步驟 Step 1</h3>
+            <video id="stepVideo" class="step-video" autoplay loop muted controls>
+                <source src="{{ url_for('static', filename='video/video1.mp4') }}" type="video/mp4">
+                您的瀏覽器不支援影片播放。
+            </video>
+            <img id="stepImage" class="step-image" src="" alt="步驟圖片" style="display: none;" />
+            <audio id="stepAudio" src="" style="display: none;"></audio>
+        </div>
+
+        <div class="right-top">
+            <h3 id="stepTitle">Step 1</h3>
+            <p id="stepDescription">380mm機架中間箭頭朝前</p>
+        </div>
+
+        <div class="buttons">
+            <button id="previousBtn" class="arrow-btn">上一步</button>
+            <button id="nextBtn" class="arrow-btn">下一步</button>
+        </div>
+
+        <div id="statusText" class="status-text"></div>
+    </div>
+</body>
+</html>
